@@ -1,16 +1,33 @@
 {
 	"name": "Rust",
-	"image": "mcr.microsoft.com/devcontainers/rust:latest",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
 	"features": {},
+	"runArgs": [
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined"
+	],
 	"customizations": {
 		"vscode": {
-			"settings": {},
+			"settings": {
+				"files.watcherExclude": {
+					"**/target/**": true
+				},
+				"rust-analyzer.checkOnSave.command": "clippy"
+			},
 			"extensions": [
-				"tamasfe.even-better-toml", // toml support
-				"rust-lang.rust-analyzer" // rust intellisense and more
+				"vadimcn.vscode-lldb",
+				"mutantdino.resourcemonitor",
+				"tamasfe.even-better-toml",
+				"rust-lang.rust-analyzer",
+				"fill-labs.dependi"
 			]
 		}
 	},
-	"runArgs": [],
-	"containerUser": "vscode"
+	"remoteUser": "vscode",
+	"postAttachCommand": {
+		"Cargo Version": "cargo --version"
+	}
 }
