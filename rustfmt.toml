@@ -1,9 +1,11 @@
-edition = "2021"
-
-match_block_trailing_comma = true
-imports_granularity = "Module"
-use_field_init_shorthand = true
+# Stable features (basic ones)
 use_small_heuristics = "Max"
+max_width = 120
+match_block_trailing_comma = true
+use_field_init_shorthand = true
 
+# Unstable features (useful ones)
 unstable_features = true
+group_imports = "StdExternalCrate"
+imports_granularity = "Module"
 inline_attribute_width = 75

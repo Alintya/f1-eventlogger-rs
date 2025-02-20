@@ -31,7 +31,7 @@ RUN rustup target add --toolchain nightly \
     x86_64-pc-windows-gnu
 
 # Install components
-RUN rustup component add clippy
+RUN rustup component add clippy fmt
 
 # Verify installations
 RUN rustc --version && \
